@@ -1,0 +1,213 @@
+@mixin first-child-sticky {
+  position: sticky !important;
+  left: 0 !important;
+  padding-left: 15px !important;
+}
+
+@mixin last-child-sticky {
+  position: sticky !important;
+  right: 0 !important;
+  padding-left: 15px !important;
+}
+
+$colorTableHeader: #cdeff8;
+$headerTextColor: #545961;
+$bodyTextColor: #24282d;
+$bodyBorderColor: #edf2f7;
+$backBtnCOlor: #e47078;
+$labelColor: #4f4f4f;
+$inputBorderColor: #9c9c9c;
+
+.tableContainer {
+  height: 65vh;
+  width: 100%;
+  overflow: auto;
+  background: transparent;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.07);
+
+  .table {
+    border-collapse: collapse !important;
+    width: 100%;
+
+    .thead {
+      height: 34px;
+      position: sticky;
+      top: 0px;
+      z-index: 2;
+      background: $colorTableHeader !important;
+
+      .table-row {
+        background: $colorTableHeader !important;
+        font-weight: $fw_600;
+        padding: 6px 12px;
+
+        .cell {
+          color: #545961;
+          font-size: $font_12;
+          font-weight: $fw_600;
+          text-transform: uppercase;
+          box-sizing: border-box;
+          padding: 0 12px;
+          border-right: 1px solid $whiteColor;
+
+          &:first-child {
+            background-color: $colorTableHeader;
+            overflow: hidden;
+            @include first-child-sticky;
+          }
+          &:nth-child(2) {
+            background-color: $colorTableHeader;
+            position: sticky;
+            left: 86px;
+          }
+          &:last-child {
+            background-color: $colorTableHeader;
+            border-left: 1px solid $whiteColor;
+            border-right: none;
+            overflow: hidden;
+            @include last-child-sticky;
+          }
+        }
+
+        cursor: default !important;
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .tbody {
+      .table-row {
+        .cell {
+          padding: 4px 12px !important;
+          font-size: $font_14;
+          text-align: start;
+          background-color: $whiteColor !important;
+          font-weight: $fw_400;
+          color: #24282d;
+          font-family: $fontPrimary;
+          border-bottom: 1px solid #edf2f7;
+          border-right: 1px solid #edf2f7;
+
+          &:first-child {
+            @include first-child-sticky;
+            border-right: 1px solid #edf2f7;
+          }
+          &:nth-child(2) {
+            border-right: 1px solid #edf2f7;
+            position: sticky;
+            left: 86px;
+          }
+
+          &:last-child {
+            @include last-child-sticky();
+            border-left: 1px solid #edf2f7;
+            border-right: none;
+          }
+
+          input {
+            height: 16px;
+            width: 18px;
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        &:hover {
+          .cell {
+            background-color: $whiteColor !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+#validationTable {
+  .tableContainer {
+    border-radius: 0 0 8px 8px;
+    height: auto !important;
+    max-height: 400px;
+  }
+  .table {
+    .thead {
+      .table-row {
+        .cell {
+          text-align: left !important;
+        }
+      }
+    }
+  }
+}
+
+.MuiContainer-root {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tablePagenationBlock {
+  padding: 0.625rem 0.625rem 0.625rem 0.9375rem !important;
+  box-shadow: none !important;
+  border: 1px solid #efefef !important;
+  max-width: 100% !important;
+  border-radius: 0 0 10px 10px !important;
+
+  .tablePagination {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    color: #000000 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+
+    & * {
+      font-size: $font_12;
+      font-family: $fontPrimary;
+      letter-spacing: 0;
+      font-weight: $fw_500;
+    }
+
+    .label {
+      margin-right: 10px;
+    }
+
+    .rowPerPage {
+      display: flex;
+      align-items: center;
+
+      .selectComponent {
+        font-family: $fontPrimary;
+        border: 1px solid $inputBorderColor;
+
+        &:hover {
+          border-color: $inputBorderColor;
+        }
+
+        &:focus-within {
+          border-color: $inputBorderColor;
+        }
+
+        &.Mui-focused {
+          border-color: $inputBorderColor;
+        }
+      }
+
+      fieldset {
+        border: 0;
+      }
+    }
+
+    .totalCount {
+      font-size: clamp(12px, 0.625vw, 14px);
+      font-family: $fontPrimary;
+      font-weight: $fw_500;
+      margin-top: 5px;
+      margin-right: 1rem;
+      white-space: pre-wrap;
+      color: $blackColor;
+    }
+  }
+}

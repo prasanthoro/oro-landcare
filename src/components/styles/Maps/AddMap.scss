@@ -1,0 +1,1334 @@
+.addMapDrawer {
+  z-index: 1300 !important;
+  .MuiBackdrop-root {
+    background: #00000020;
+  }
+  .MuiPaper-root {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    border-radius: 8px;
+    top: 10px;
+    right: 10px;
+    box-sizing: border-box;
+    padding: 1rem;
+  }
+  .dialogHedaer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0.5rem 0;
+    border-bottom: 1px solid #dddddd;
+    .dialogHeading {
+      color: $blackColor;
+      font-family: $fontPrimary;
+      font-size: $font_16;
+      font-weight: $fw_400;
+    }
+    .iconBtn {
+      padding: 0;
+      font-size: $font_18;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  .dialogBody {
+    padding: 1rem 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .eachFeildGrp {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      .label {
+        color: #00000099;
+        font-family: $fontPrimary;
+        font-size: $font_12;
+        font-weight: $fw_500;
+      }
+      .defaultTextFeild {
+        &.text {
+          .MuiInputBase-root {
+            height: 30px;
+          }
+        }
+        &.multiline {
+          .MuiInputBase-root {
+            padding: 8px 14px;
+          }
+        }
+        .MuiInputBase-root {
+          background: $whiteColor;
+          color: $blackColor;
+          font-weight: $fw_400;
+          font-size: 12px;
+          box-sizing: border-box;
+          border-radius: 4px;
+          border: 1.4px solid #c8c7ce;
+          font-family: $fontPrimary;
+          width: 100%;
+
+          fieldset {
+            border: 0 !important;
+          }
+        }
+      }
+    }
+    .dialogActionBtn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      button {
+        text-transform: capitalize;
+        font-family: $fontPrimary;
+        font-size: $font_14;
+        font-weight: $fw_500;
+        padding: 6px 15px;
+        &:first-child {
+          color: $primaryColor;
+          &:hover {
+            background-color: transparent;
+          }
+        }
+        &:last-child {
+          color: $whiteColor;
+          background-color: $primaryColor;
+        }
+      }
+    }
+  }
+}
+.mapViewContainer {
+  width: 400px;
+  height: 100vh;
+  background-color: $whiteColor;
+  box-sizing: border-box;
+  padding: 0.5rem 0.5rem 0;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0.5rem 0;
+    border-bottom: 1px solid #dddddd;
+    button {
+      text-transform: capitalize;
+      font-family: $fontPrimary;
+      font-weight: $fw_400;
+    }
+    .backBtn {
+      font-size: $font_14;
+      color: $blackColor;
+      padding: 0;
+    }
+    .actionGrp {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      .importBtn {
+        border: 1px solid #3c4043;
+        padding: 2px 10px;
+        color: $whiteColor;
+        font-size: $font_12;
+        border-radius: 4px;
+        background: #3c4043;
+        &:hover {
+          background: #3c4043;
+        }
+      }
+      .iconBtn {
+        padding: 0;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+  .viewContent {
+    padding: 1rem 0 0;
+    .mapDetails {
+      font-family: $font-secondary;
+      font-weight: $fw_400;
+      letter-spacing: 0;
+      .mapTitle {
+        color: #000000e6;
+        font-size: $font_16;
+      }
+      .mapCreated {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: #000000cc;
+        font-size: $font_12;
+      }
+      .mapDescription {
+        color: #000000b3;
+        font-size: $font_12;
+        margin-top: 0.5rem;
+      }
+    }
+    .markersBlock {
+      margin-top: 1.5rem;
+      .blockHeading {
+        color: #202124;
+        font-family: $font-secondary;
+        font-size: $font_16;
+        font-weight: $fw_500;
+      }
+      .markersContainer {
+        .markersList {
+          margin-top: 0.5rem;
+          .filterGrp {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 0.5rem;
+            .defaultTextFeild {
+              .MuiInputBase-root {
+                background: $whiteColor;
+                color: $blackColor;
+                font-weight: $fw_500;
+                font-size: 12px;
+                box-sizing: border-box;
+                border-radius: 4px;
+                border: 1.4px solid #c8c7ce;
+                background-color: #f2f2f2;
+                font-family: $fontPrimary;
+                width: 100%;
+                height: 30px;
+                fieldset {
+                  border: 0 !important;
+                }
+              }
+            }
+            .defaultAutoComplete {
+              width: 100%;
+              .MuiFormControl-root {
+                width: 100%;
+              }
+              .MuiInputBase-root {
+                background: $whiteColor;
+                color: $blackColor;
+                font-weight: $fw_400;
+                font-size: 12px;
+                box-sizing: border-box;
+                border-radius: 4px;
+                border: 1.4px solid #c8c7ce;
+                background-color: #f2f2f2;
+                font-family: $fontPrimary;
+                width: 100%;
+                height: 30px;
+                fieldset {
+                  border: 0 !important;
+                }
+              }
+            }
+          }
+          .listContainer {
+            margin-top: 10px;
+            height: calc(100vh - 255px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            row-gap: 0.5rem;
+            .eachListItem {
+              border-radius: 8px;
+              background: #edf5e0;
+              padding: 8px;
+              cursor: pointer;
+              .markerHeader {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 0.5rem;
+                .location {
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                  color: $blackColor;
+                  font-family: $font-secondary;
+                  font-size: $font_14;
+                  font-weight: $fw-400;
+                  img {
+                    border-radius: 50%;
+                  }
+                }
+                .locationType {
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                  color: $blackColor;
+                  font-family: $font-secondary;
+                  font-size: $font_12;
+                  font-weight: $fw-400;
+                }
+              }
+              .markerDesc {
+                color: #000000cc;
+                text-overflow: ellipsis;
+                font-family: $font-secondary;
+                font-size: $font_12;
+                font-weight: $fw-400;
+                line-height: 130%;
+              }
+              .markerFooter {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 0.5rem;
+                .latLang {
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                  color: #034a75;
+                  font-family: $font-secondary;
+                  font-size: $font_12;
+                  font-weight: $fw_400;
+                }
+                .createdDate {
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                  color: #000000b3;
+                  font-family: $font-secondary;
+                  font-size: $font_12;
+                  font-weight: $fw_400;
+                }
+              }
+            }
+          }
+          .showAllBtn {
+            border-radius: 4px;
+            border: 1px solid #202124;
+            color: #202124;
+            font-family: $fontPrimary;
+            font-size: $font_12;
+            font-weight: $fw_500;
+            text-transform: capitalize;
+            padding: 3px 12px;
+          }
+        }
+        .nodataGrp {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 65vh;
+          width: 60%;
+          margin: 0 auto;
+          .nodataTxt {
+            color: $blackColor;
+            text-align: center;
+            font-family: $font-secondary;
+            font-size: $font_14;
+            font-weight: $fw-400;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+}
+.addMarkerDialog {
+  padding: 1rem;
+  padding-bottom: 0;
+  .dialogHeading {
+    color: $blackColor;
+    font-family: $fontPrimary;
+    font-size: $font_16;
+    font-weight: $fw_500;
+    margin: 0 0 0.5rem 0;
+    padding-bottom: 0.5rem;
+    line-height: 100%;
+  }
+  .subHeading {
+    color: #205732;
+    font-family: $fontPrimary;
+    font-size: $font_14;
+    font-weight: $fw_500;
+    line-height: 100%;
+    margin: 0 0 0.5rem 0;
+  }
+  .basicInformation {
+    width: 65%;
+    .eachGrp {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 1rem;
+    }
+  }
+  .locationInformation {
+    margin-top: 0.5rem;
+    .eachGrp {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 1rem;
+    }
+  }
+  .media {
+    margin-top: 0.5rem;
+    .feildEntity {
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .addBtn {
+      color: #0e2f00;
+      font-family: $fontPrimary;
+      font-size: $font_14;
+      font-weight: $fw_500;
+      line-height: 100%;
+      text-transform: capitalize;
+      &.update {
+        color: $primaryColor !important;
+      }
+      &.cancel {
+        color: $colorRed !important;
+      }
+    }
+    ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 0.5rem;
+      padding-left: 0;
+      margin-block: 0.5rem;
+      li {
+        list-style: none;
+        border-radius: 60px;
+        background: #e1e1e1;
+        overflow: hidden;
+        color: $blackColor;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-family: $fontPrimary;
+        font-size: $font_12;
+        font-weight: $fw_500;
+        line-height: 100%;
+        button {
+          padding: 6px;
+        }
+      }
+    }
+  }
+  .tags {
+    margin-top: 0.5rem;
+    .feildEntity {
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .addBtn {
+      color: #0e2f00;
+      font-family: $fontPrimary;
+      font-size: $font_14;
+      font-weight: $fw_500;
+      line-height: 100%;
+      text-transform: capitalize;
+      &.update {
+        color: $primaryColor !important;
+      }
+      &.cancel {
+        color: $colorRed !important;
+      }
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding-left: 0;
+      margin-block: 0.5rem;
+      li {
+        list-style: none;
+        border-radius: 60px;
+        background: #e8f3d4;
+        overflow: hidden;
+        color: $blackColor;
+        text-align: center;
+        text-overflow: ellipsis;
+        font-family: $fontPrimary;
+        font-size: $font_12;
+        font-weight: $fw_500;
+        line-height: 100%;
+        padding-left: 10px;
+        button {
+          padding: 6px;
+        }
+      }
+    }
+  }
+  .eachFeildGrp {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.8rem;
+    label {
+      margin-bottom: 5px;
+      color: #00000099;
+      font-family: $fontPrimary;
+      font-size: $font_12;
+      font-weight: $fw_500;
+      margin-bottom: 4px;
+    }
+    .defaultTextFeild {
+      &.text {
+        .MuiInputBase-root {
+          height: 28px;
+        }
+      }
+      .MuiInputBase-root {
+        background: $whiteColor;
+        color: $blackColor;
+        font-weight: $fw_400;
+        font-size: 12px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1px solid #c8c7ce;
+        font-family: $fontPrimary;
+        width: 100%;
+
+        fieldset {
+          border: 0 !important;
+        }
+      }
+    }
+    .defaultAutoComplete {
+      width: 100%;
+      .MuiFormControl-root {
+        width: 100%;
+      }
+      .MuiInputBase-root {
+        background: $whiteColor;
+        color: $blackColor;
+        font-weight: $fw_400;
+        font-size: 12px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: 1.4px solid #c8c7ce;
+        font-family: $fontPrimary;
+        width: 100%;
+        height: 32px;
+        fieldset {
+          border: 0 !important;
+        }
+      }
+    }
+  }
+  .actionBtnGrp {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    position: sticky;
+    bottom: 0;
+    background-color: #fff;
+    padding-bottom: 1rem;
+    button {
+      text-transform: capitalize;
+      text-align: center;
+      font-family: $fontPrimary;
+      font-size: $font_14;
+      font-weight: $fw_500;
+
+      &:first-child {
+        color: $primaryColor;
+        &:hover {
+          background-color: transparent;
+        }
+      }
+      &:last-child {
+        background-color: $primaryColor;
+        color: $whiteColor;
+        padding: 4px 20px;
+      }
+    }
+  }
+}
+.showAllMarkerDialog {
+  .dialogHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    .dialogTitle {
+      color: #201c1c;
+      font-family: $fontPrimary;
+      font-size: $font_16;
+      font-weight: $fw_500;
+      letter-spacing: -0.25px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .filterGrp {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      .defaultTextFeild {
+        .MuiInputBase-root {
+          background: $whiteColor;
+          color: $blackColor;
+          font-weight: $fw_400;
+          font-size: 12px;
+          box-sizing: border-box;
+          border-radius: 4px;
+          border: 1.4px solid #c8c7ce;
+          font-family: $fontPrimary;
+          width: 200px;
+          height: 30px;
+
+          fieldset {
+            border: 0 !important;
+          }
+        }
+      }
+      .defaultAutoComplete {
+        width: 200px;
+        .MuiFormControl-root {
+          width: 100%;
+        }
+        .MuiInputBase-root {
+          background: $whiteColor;
+          color: $blackColor;
+          font-weight: $fw_400;
+          font-size: 12px;
+          box-sizing: border-box;
+          border-radius: 4px;
+          border: 1.4px solid #c8c7ce;
+          font-family: $fontPrimary;
+          width: 100%;
+          height: 30px;
+          fieldset {
+            border: 0 !important;
+          }
+        }
+      }
+      .iconBtn {
+        padding: 0;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+
+#importModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #00000066;
+  .modalContent {
+    background-color: #fff;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-height: calc(100vh - 20px);
+    margin: auto;
+    box-sizing: border-box;
+    overflow-y: auto;
+    @media (max-width: 1366px) {
+      width: 90%;
+    }
+    .mainContent {
+      padding: 0 24px 24px;
+    }
+    .modalContainer {
+      display: grid;
+      grid-column-gap: 1rem;
+
+      .rightBlock {
+        .mapping-screen {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0;
+
+          .mappingHeader {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-column-gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            .matchHeaderBtn {
+              border-radius: 8px;
+              background: #e1e1e1;
+              color: $blackColor;
+              text-align: center;
+              font-family: $fontPrimary;
+              font-size: $font_16;
+              font-weight: $fw_500;
+              line-height: 150%;
+              text-transform: capitalize;
+              padding-block: 6px;
+            }
+            .downloadBtn {
+              border-radius: 8px;
+              background: rgba(117, 162, 55, 0.3);
+              color: $primaryColor;
+              text-align: center;
+              font-family: $fontPrimary;
+              font-size: $font_16;
+              font-weight: $fw_500;
+              line-height: 150%;
+              text-transform: capitalize;
+            }
+          }
+          .table {
+            margin-bottom: 20px;
+            height: 300px;
+            overflow-y: auto;
+
+            h2 {
+              font-size: 18px;
+              font-weight: bold;
+              margin-bottom: 10px;
+            }
+
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              thead {
+                position: sticky;
+                top: -0.5px;
+                z-index: 1;
+              }
+              th,
+              td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: left;
+              }
+
+              th {
+                background-color: #cdeff8;
+                font-weight: bold;
+                color: #545961;
+                font-family: $fontPrimary;
+                font-size: $font_12;
+                font-weight: $fw_600;
+                line-height: 100%;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                padding: 12px;
+              }
+              td {
+                overflow: hidden;
+                color: #24282d;
+                text-overflow: ellipsis;
+                font-family: $fontPrimary;
+                font-size: $font_14;
+                font-weight: $fw_400;
+                line-height: 100%;
+                padding-block: 5px !important;
+
+                .MuiInputBase-root {
+                  width: 100%;
+                  height: 30px;
+                  font-size: $font_12;
+                  font-weight: $fw_400;
+                  line-height: 100%;
+                  font-family: $fontPrimary;
+                  border: 1px solid #c8c7ce;
+                  fieldset {
+                    border: 0;
+                    border-radius: 4px;
+                  }
+                }
+                &:nth-child(1) {
+                  width: 40%;
+                }
+                &:nth-child(2) {
+                  width: 45%;
+                }
+                &:nth-child(3) {
+                  width: 15%;
+                }
+              }
+            }
+          }
+          // .form-group {
+          //   margin-bottom: 15px;
+          //   display: flex;
+          //   flex-direction: row;
+          //   align-items: center;
+
+          //   label {
+          //     display: block;
+          //     margin-bottom: 5px;
+          //   }
+
+          //   input {
+          //     width: 100%;
+          //     padding: 8px;
+          //     box-sizing: border-box;
+          //   }
+          // }
+
+          .button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 1.5rem;
+
+            button {
+              padding: 6px 30px;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              text-align: center;
+              font-family: $fontPrimary;
+              font-size: $font_16;
+              font-weight: $fw_500;
+              line-height: 150%;
+              text-transform: capitalize;
+            }
+
+            button:first-child {
+              background-color: transparent;
+              color: #f1282e;
+            }
+
+            button:last-child {
+              background: #75a237;
+              color: #f2f2f2;
+            }
+          }
+        }
+      }
+    }
+    .modalHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      padding: 24px 24px 0 24px;
+      position: sticky;
+      top: 0;
+      background-color: $whiteColor;
+      z-index: 2;
+      .modalHeading {
+        color: #0d0d0d;
+        font-family: $fontPrimary;
+        font-size: $font_24;
+        font-weight: $fw_500;
+        margin: 0;
+      }
+      img {
+        cursor: pointer;
+      }
+    }
+    .instructions {
+      background-color: #ffa80066;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ffeeba;
+      text-align: left;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      ol {
+        margin: 0;
+        padding-inline-start: 13px;
+      }
+      p,
+      li {
+        color: $blackColor;
+        font-family: $fontPrimary;
+        font-size: $font_14;
+        font-weight: $fw_400;
+        margin: 0;
+      }
+    }
+    .dropzone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 150px;
+      padding: 20px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border-radius: 8px;
+      border: 1px dashed #1b2459;
+      background: #f2f6fb;
+      box-sizing: border-box;
+      p {
+        margin: 0;
+        color: $blackColor;
+        font-family: $fontPrimary;
+        font-size: $font_16;
+        font-weight: $fw_400;
+        &.helperText {
+          color: #636363;
+          font-size: $font_14;
+          margin-top: 1rem;
+        }
+      }
+    }
+    .fileUpload {
+      margin-bottom: 20px;
+      p {
+        margin: 0;
+
+        color: $blackColor;
+        font-family: $fontPrimary;
+        font-size: $font_14;
+      }
+    }
+    .btnGrp {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+      button {
+        text-align: center;
+        font-family: $fontPrimary;
+        font-size: $font_16;
+        font-weight: $fw_500;
+        padding: 7px 35px;
+        border-radius: 6px;
+        border: 0;
+        &:first-child {
+          color: #75a237;
+          background: transparent;
+        }
+        &:last-child {
+          background: #75a237;
+          color: $whiteColor;
+        }
+      }
+    }
+  }
+  .validationTableContainer {
+    margin-top: 1rem;
+    border-radius: 8px;
+    background: $whiteColor;
+    box-shadow: 0px -4px 17px 0px #0000000a, 0px 6px 8px -6px #18274b0f,
+      0px 8px 16px -6px #18274b05;
+    .validationHead {
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h5 {
+        color: #201c1c;
+        font-family: $fontPrimary;
+        font-size: $font_16;
+        font-weight: $fw_500;
+        line-height: 100%;
+        letter-spacing: -0.25px;
+      }
+      .importInfo {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        p {
+          font-family: $fontPrimary;
+          font-size: $font_14;
+          font-weight: $fw_400;
+          line-height: 100%;
+          letter-spacing: -0.25px;
+          &.uploaded {
+            color: $primaryColor;
+            span {
+              border-radius: 4px;
+              background: #45a84533;
+              padding: 1px 12px;
+            }
+          }
+          &.failed {
+            color: $colorRed;
+            span {
+              border-radius: 4px;
+              background: #f1282e33;
+              padding: 1px 12px;
+            }
+          }
+        }
+      }
+    }
+    .tableContainer {
+      thead {
+        tr {
+          th {
+            &:nth-child(2) {
+              left: 149.5px !important;
+            }
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            &:nth-child(2) {
+              left: 149.5px !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.signleMarkerView {
+  width: 400px;
+  height: 100vh;
+  background-color: $whiteColor;
+  box-sizing: border-box;
+  padding: 0.5rem 0.5rem 0;
+  overflow-y: auto;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 0.5rem 0;
+    border-bottom: 1px solid #dddddd;
+
+    button {
+      text-transform: capitalize;
+      font-family: $fontPrimary;
+      font-weight: $fw_400;
+    }
+    .backBtn {
+      font-size: $font_14;
+      color: $blackColor;
+      padding: 0;
+    }
+    .iconBtn {
+      padding: 0;
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+  .markerViewContent {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+  .viewContent {
+    border-radius: 4px;
+    background: #edf5e0;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+
+    .imgBlock {
+      height: 180px;
+      border-radius: 4px;
+      position: relative;
+      background: #fff;
+      .iconBtnMenu {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .mapImg {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+      }
+      .navButton {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #00000053;
+        color: #fff;
+        border: none;
+        padding: 4px;
+        cursor: pointer;
+        z-index: 1;
+        &:first-child {
+          border-radius: 0 2px 2px 0;
+          left: 0;
+        }
+        &:last-child {
+          right: 0;
+          border-radius: 2px 0 0 2px;
+        }
+      }
+    }
+    .MuiPaper-root {
+      box-shadow: none;
+      &.Mui-expanded {
+        margin: 0;
+      }
+      .MuiAccordionSummary-content {
+        margin: 0;
+      }
+    }
+    .markerTitle {
+      color: $blackColor;
+      font-family: $font-secondary;
+      font-size: $font_18;
+      font-weight: $fw_400;
+      letter-spacing: 0;
+      line-height: 100%;
+      margin-block: 0.8rem;
+    }
+    .markerLocation {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #005b8d;
+      font-family: $font-secondary;
+      font-size: $font_16;
+      font-weight: $fw_400;
+      letter-spacing: 0;
+      margin-bottom: 0.8rem;
+      line-height: 100%;
+    }
+    .tagValue {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      .tagText {
+        color: $blackColor;
+        font-family: $fontPrimary;
+        font-size: $font_12;
+        font-weight: $fw_500;
+        letter-spacing: 0;
+        border-radius: 60px;
+        background: $whiteColor;
+        line-height: 130%;
+        padding: 2px 8px;
+      }
+    }
+
+    .value {
+      color: $blackColor;
+      font-family: $font-secondary;
+      font-size: $font_16;
+      font-weight: $fw_400;
+      letter-spacing: 0;
+      margin-bottom: 0.8rem;
+      line-height: 130%;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btnGrp {
+      width: 100%;
+      display: grid;
+      grid-column-gap: 12px;
+      align-items: center;
+      margin-block: 1.5rem 0.3rem;
+      .navigateBtn {
+        border-radius: 4px;
+        background: #75a237;
+        text-transform: capitalize;
+        color: $whiteColor;
+        font-family: $font-urbanist;
+        font-size: $font_16;
+        font-weight: $fw_500;
+        padding-block: 3px;
+      }
+      // .iconBtn {
+      //   border-radius: 4px;
+      //   background: #202124;
+      // }
+    }
+  }
+}
+
+// .gmnoprint {
+//   margin: 5px;
+//     z-index: 10;
+//     position: absolute;
+//     left: 2rem;
+//     top: 5rem;
+// }
+.delete-dialog {
+  .MuiPaper-root {
+    width: 250px;
+    border-radius: 16px;
+    padding: 0 1rem 1rem;
+  }
+  h2 {
+    color: $blackColor;
+    font-family: $fontPrimary;
+    font-size: $font_18;
+    font-weight: $fw_500;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding-inline: 0;
+  }
+  .delete-text {
+    color: $blackColor;
+    font-family: $fontPrimary;
+    font-size: $font_16;
+    font-weight: $fw_400;
+    line-height: 140%;
+  }
+  .MuiDialogContent-root {
+    padding-inline: 0;
+  }
+  .action-btnGrp {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    padding: 0;
+    button {
+      text-align: center;
+      font-family: $fontPrimary;
+      font-size: $font_16;
+      font-weight: $fw_500;
+      line-height: 100%;
+      text-transform: capitalize;
+      padding: 8px 15px;
+    }
+    .cancel {
+      color: $blackColor;
+    }
+    .delete {
+      color: $whiteColor;
+      border-radius: 8px;
+      background: #75a237;
+    }
+  }
+}
+.noDataFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 126px);
+}
+
+#markersPageWithMap {
+  .defaultAutoComplete {
+    width: 100%;
+    .MuiFormControl-root {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .MuiInputBase-root {
+      background: $whiteColor;
+      color: $blackColor;
+      font-weight: $fw_400;
+      font-size: 12px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      border: 1.4px solid #c8c7ce;
+      background-color: #f2f2f2;
+      font-family: $fontPrimary;
+      width: 100%;
+      height: 38px;
+      fieldset {
+        border: 0 !important;
+      }
+    }
+  }
+}
+
+//share link dialog styles start
+.shareLinkDialog {
+  .MuiPaper-root {
+    min-width: 350px;
+    min-height: 260px;
+    border-radius: 16px;
+    padding: 0 1rem 1rem;
+  }
+  .dialogHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    h2 {
+      color: $blackColor;
+      font-family: $fontPrimary;
+      font-size: $font_18;
+      font-weight: $fw_500;
+      line-height: 100%;
+      padding: 0;
+    }
+    button {
+      padding: 0;
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+  .MuiTabs-flexContainer {
+    justify-content: flex-start;
+  }
+
+  .MuiDialogContent-root {
+    padding: 0;
+
+    button {
+      text-transform: capitalize;
+      font-family: $fontPrimary;
+    }
+    .shareLinkDialogContent {
+      padding-top: 1rem;
+      .imageDetailsBlock {
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+    }
+    .link {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 0.5rem;
+      .MuiInputBase-root {
+        background: $whiteColor;
+        color: $blackColor;
+        font-weight: $fw_400;
+        font-size: 12px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        height: 30px;
+        border: 1.4px solid #e4e4e4;
+        font-family: $fontPrimary;
+        width: 100%;
+
+        fieldset {
+          border: 0 !important;
+        }
+      }
+      .copyLinkBtn {
+        text-transform: uppercase;
+        font-size: $font_14;
+      }
+    }
+    .share-icons {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-column-gap: 0.5rem;
+      button {
+        padding: 0;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+:root {
+  /* fonts */
+  --font-inter: Inter;
+  --font-poppins: Poppins;
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+
+  /* Colors */
+  --neutral-white-100: #fff;
+  --red: #d94841;
+  --color-darkgray: #959595;
+  --color-black: #000;
+  --green-brand: #45a845;
+  --background-green: rgba(5, 161, 85, 0.1);
+  --neutral-black-90: #191919;
+  --color-gray-100: rgba(0, 0, 0, 0.2);
+  --primarytext: #35353d;
+  --color-slategray: rgba(106, 113, 133, 0.6);
+  /* Gaps */
+  --gap-61xl: 80px;
+  --gap-3xs: 10px;
+  --gap-5xs: 8px;
+  --gap-13xl: 32px;
+  --gap-9xs: 4px;
+  /* Paddings */
+  --padding-xs: 12px;
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+  /* Border radiuses */
+  --br-3xs: 10px;
+}
+.rs-picker-daterange-header {
+  display: none !important;
+}
+
+.marker-cluster-small {
+  background-color: rgba(181, 226, 140, 0.6);
+}
+
+.marker-cluster-small div {
+  background-color: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-medium {
+  background-color: rgba(241, 211, 87, 0.6);
+}
+
+.marker-cluster-medium div {
+  background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-large {
+  background-color: rgba(253, 156, 115, 0.6);
+}
+
+.marker-cluster-large div {
+  background-color: rgba(241, 128, 23, 0.6);
+}
