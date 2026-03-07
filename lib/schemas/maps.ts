@@ -27,12 +27,10 @@ export const maps :any= pgTable("maps", {
     updated_at: timestamp("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`)
 
 },
-    (table: any) => {
-        return {
-            slugIdx: index("slug_idx").on(table.slug),
-            titleIdx: index("title_idx").on(table.title)
-        };
-    });
+    (table) => [
+        index("slug_idx").on(table.slug),
+        index("title_idx").on(table.title)
+    ]);
 
 export function lower(title: AnyPgColumn): SQL {
     return sql`lower(${title})`;

@@ -9,6 +9,6 @@ enum Status{
 }
   
 export const UpdateMapStatusSchema = v.object({
-    status: v.pipe(v.string(),v.nonEmpty(), v.enum(Status)),
+    status: v.pipe(v.enum(Status), v.nonEmpty()),
 });
   

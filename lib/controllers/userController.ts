@@ -16,7 +16,7 @@ const hashHelper = new HashHelper();
 const userDataServiceProvider = new UserDataServiceProvider();
 
 export class UserController {
-  async signUp(req: NextRequest, res: NextResponse) {
+  async signUp(req: NextRequest) {
     try {
       const reqData = await req.json();
 
@@ -38,7 +38,7 @@ export class UserController {
     }
   }
 
-  async signIn(reqData: any, res: NextResponse) {
+  async signIn(reqData: any) {
 
     try {
 

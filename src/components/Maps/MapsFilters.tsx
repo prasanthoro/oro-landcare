@@ -10,8 +10,13 @@ import {
   useSearchParams,
 } from "next/navigation";
 import { useEffect, useState } from "react";
-import { DateRangePicker } from "rsuite";
+import dynamic from "next/dynamic";
 import "rsuite/dist/rsuite.css";
+
+const DateRangePicker = dynamic(
+  () => import("rsuite").then((mod) => mod.DateRangePicker),
+  { ssr: false }
+);
 import AutoCompleteSearch from "../Core/AutoCompleteSearch";
 
 const MapsFilters = ({ getAllMaps, mapsData, mapsCount }: any) => {
@@ -183,12 +188,14 @@ const MapsFilters = ({ getAllMaps, mapsData, mapsCount }: any) => {
             value={searchString}
             onChange={handleSearchChange}
             placeholder="Search"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <Image src="/search-icon.svg" alt="" width={15} height={15} />
-                </InputAdornment>
-              ),
+            slotProps={{
+              input: {
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Image src="/search-icon.svg" alt="" width={15} height={15} />
+                  </InputAdornment>
+                ),
+              },
             }}
           />
           <DateRangePicker
@@ -200,7 +207,7 @@ const MapsFilters = ({ getAllMaps, mapsData, mapsCount }: any) => {
             onChange={handleDateRangeChange}
             placeholder="Start Date - End Date"
             style={{ width: 250 }}
-            disabledDate={(date) => {
+            shouldDisableDate={(date) => {
               return date.getTime() >= new Date().getTime();
             }}
             defaultCalendarValue={[

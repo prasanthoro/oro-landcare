@@ -6,7 +6,7 @@ const mapsController = new MapsController();
 
 
 
-export async function GET(req: NextRequest, { params }: any) {
-    
-    return mapsController.getMapBySlug(params);
+export async function GET(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
+    return mapsController.getMapBySlug(resolvedParams);
 }

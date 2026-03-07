@@ -5,7 +5,7 @@ import { SignInSchema } from "../../../../../../lib/validations/users/signin";
 import { ResponseHelper } from "../../../../../../lib/helpers/reponseHelper";
 const userController = new UserController();
 
-    export async function POST(req: NextRequest, res: NextResponse) {
+    export async function POST(req: NextRequest) {
         // Validate request
         const reqData = await req.json();
         const validationErrors = await validate(SignInSchema, reqData);
@@ -13,5 +13,5 @@ const userController = new UserController();
             return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
         }
 
-        return userController.signIn(reqData, res);
+        return userController.signIn(reqData);
     }

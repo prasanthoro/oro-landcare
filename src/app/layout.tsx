@@ -13,13 +13,13 @@ export default function RootLayout({
 }>) {
   const pathname = usePathname();
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
           {pathname == "/maps" ? <Navbar>{children}</Navbar> : children}
         </Providers>
+        <Toaster richColors closeButton position="top-center" />
       </body>
-      <Toaster richColors closeButton position="top-center" />
     </html>
   );
 }

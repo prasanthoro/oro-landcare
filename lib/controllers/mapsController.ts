@@ -32,7 +32,7 @@ const mapsDataServiceProvider = new MapsDataServiceProvider();
 const markersDataServiceProvider = new MarkersDataServiceProvider();
 
 export class MapsController {
-  async addMap(reqData: IMap, res: NextResponse) {
+  async addMap(reqData: IMap) {
     try {
       const normalizedTitle = reqData.title.trim().replace(/\s+/g, " ");
       reqData.slug = makeSlug(normalizedTitle);
