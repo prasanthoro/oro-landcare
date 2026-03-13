@@ -103,8 +103,8 @@ const ShareLinkDialog = ({
               <TextField
                 value={linkToShare}
                 size="small"
-                InputProps={{
-                  readOnly: true,
+                slotProps={{
+                  input: { readOnly: true },
                 }}
               />
               <Button
@@ -179,8 +179,8 @@ const ShareLinkDialog = ({
               <TextField
                 value={linkToEmdeded}
                 size="small"
-                InputProps={{
-                  readOnly: true,
+                slotProps={{
+                  input: { readOnly: true },
                 }}
                 fullWidth
               />

@@ -110,12 +110,14 @@ const MapMarkersList = ({
           placeholder="Search"
           value={searchString}
           onChange={handleSearchChange}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Image src="/search-icon.svg" alt="" width={15} height={15} />
-              </InputAdornment>
-            ),
+          slotProps={{
+            input: {
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Image src="/search-icon.svg" alt="" width={15} height={15} />
+                </InputAdornment>
+              ),
+            },
           }}
         />
         <AutoCompleteSearch

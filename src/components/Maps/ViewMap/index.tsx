@@ -57,7 +57,7 @@ const ViewGoogleMap = () => {
   const [searchString, setSearchString] = useState(
     params.get("search_string")
       ? decodeURIComponent(params.get("search_string") as string)
-      : "" || ""
+      : ""
   );
   const [showMarkerPopup, setShowMarkerPopup] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState<any>(null);
@@ -161,8 +161,8 @@ const ViewGoogleMap = () => {
         handleMarkerClick(markerData, markere);
       });
 
-      markere.addListener("dragstart", (event: google.maps.MouseEvent) => {});
-      markere.addListener("dragend", async (event: google.maps.MouseEvent) => {
+      markere.addListener("dragstart", (event: google.maps.MapMouseEvent) => {});
+      markere.addListener("dragend", async (event: google.maps.MapMouseEvent) => {
         setPlaceDetails({});
         setShowMarkerPopup(true);
         router.replace(`${pathName}?marker_id=${markerData?.id}`);

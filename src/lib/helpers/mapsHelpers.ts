@@ -251,7 +251,7 @@ export const getCoordinates = (locationName: any) => {
   return new Promise((resolve, reject) => {
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: locationName }, (results, status) => {
-      if (status === "OK" && results[0]) {
+      if (status === "OK" && results && results[0]) {
         const { lat, lng } = results[0].geometry.location;
         resolve([lat(), lng()]);
       } else {

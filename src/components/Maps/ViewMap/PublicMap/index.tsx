@@ -141,8 +141,8 @@ const PublicMap = () => {
         handleMarkerClick(markerData, markere);
       });
 
-      markere.addListener("dragstart", (event: google.maps.MouseEvent) => {});
-      markere.addListener("dragend", async (event: google.maps.MouseEvent) => {
+      markere.addListener("dragstart", (event: google.maps.MapMouseEvent) => {});
+      markere.addListener("dragend", async (event: google.maps.MapMouseEvent) => {
         router.replace(`${pathName}?marker_id=${markerData?.id}`);
         const latitude = event.latLng?.lat();
         const longitude = event.latLng?.lng();

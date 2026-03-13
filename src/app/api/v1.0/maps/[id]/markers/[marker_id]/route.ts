@@ -7,22 +7,25 @@ import { AddMarkerSchema } from "../../../../../../../../lib/validations/markers
 const markersController = new MarkersController();
 
 
-export async function GET(req: NextRequest, { params }: any) { 
-    return markersController.getOne(req,params);
+export async function GET(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
+    return markersController.getOne(req, resolvedParams);
 }
 
-export async function PATCH(req: NextRequest, { params }: any) { 
+export async function PATCH(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     // Validate request
     const reqData = await req.json();
     const validationErrors = await validate(AddMarkerSchema, reqData);
     if (validationErrors) {
         return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
     }
-   
-    return markersController.update(reqData, params);
+
+    return markersController.update(reqData, resolvedParams);
 }
 
 
-export async function DELETE(req: NextRequest, { params }: any) {
-    return markersController.delete(req, params);
+export async function DELETE(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
+    return markersController.delete(req, resolvedParams);
 }

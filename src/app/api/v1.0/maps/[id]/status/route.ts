@@ -7,7 +7,8 @@ import { validateAccessToken } from "../../../../../../../lib/middlewares/authMi
 const mapsController = new MapsController();
 
 
-export async function PATCH(req: NextRequest, { params }: any) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
@@ -20,5 +21,5 @@ export async function PATCH(req: NextRequest, { params }: any) {
         return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
     }
 
-    return mapsController.updateStatus(reqData, params,authResult);
+    return mapsController.updateStatus(reqData, resolvedParams, authResult);
 }

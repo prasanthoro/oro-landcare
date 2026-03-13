@@ -7,17 +7,19 @@ import { validateAccessToken } from "../../../../../../lib/middlewares/authMiddl
 const mapsController = new MapsController();
 
 
-export async function GET(req: NextRequest, { params }: any) {
+export async function GET(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
         return authResult
     }
-    
-    return mapsController.getOne(req,params);
+
+    return mapsController.getOne(req, resolvedParams);
 }
 
-export async function PATCH(req: NextRequest, { params }: any) {
+export async function PATCH(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
@@ -29,14 +31,15 @@ export async function PATCH(req: NextRequest, { params }: any) {
      if (validationErrors) {
          return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
      }
-    return mapsController.updateOne(reqData, params);
+    return mapsController.updateOne(reqData, resolvedParams);
 }
 
-export async function DELETE(req: NextRequest, { params }: any) {
+export async function DELETE(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
         return authResult
     }
-    return mapsController.deleteOne(req, params);
+    return mapsController.deleteOne(req, resolvedParams);
 }

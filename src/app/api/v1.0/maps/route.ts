@@ -9,7 +9,7 @@ import { IMap } from "../../../../../lib/interfaces/maps";
 const mapsController = new MapsController();
 
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
     }
     
-    return mapsController.addMap(reqData, res);
+    return mapsController.addMap(reqData);
 }
 
 export async function GET(req: NextRequest) {

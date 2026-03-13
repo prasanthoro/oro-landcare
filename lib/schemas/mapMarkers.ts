@@ -35,9 +35,7 @@ export const mapMarkers:any = pgTable("map_markers", {
     created_at: timestamp('created_at').notNull().defaultNow(),
     updated_at: timestamp("updated_at").notNull().default(sql`CURRENT_TIMESTAMP`)
 },
-    (table: any) => {
-        return {
-            mapIdIdx: index("map_id_idx").on(table.map_id)
-        };
-    });
+    (table) => [
+        index("map_id_idx").on(table.map_id)
+    ]);
 

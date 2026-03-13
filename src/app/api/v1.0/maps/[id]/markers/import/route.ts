@@ -4,12 +4,13 @@ import { validateAccessToken } from "../../../../../../../../lib/middlewares/aut
 const markersController = new MarkersController();
 
 
-export async function POST(req: NextRequest, { params }: any) {
+export async function POST(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
    //Check authorization
    const authResult: any = await validateAccessToken(req);
    if (authResult.status === 403) {
        return authResult
     }
-    
-    return markersController.addBulkMarkers(req, params);
+
+    return markersController.addBulkMarkers(req, resolvedParams);
 }

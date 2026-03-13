@@ -4,6 +4,7 @@ import { MarkersController } from "../../../../../../../../../../lib/controllers
 const markersController = new MarkersController();
 
 
-export async function GET(req: NextRequest, { params }: any) {
-    return markersController.getMarkersByCoordinates(params);
+export async function GET(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
+    return markersController.getMarkersByCoordinates(resolvedParams);
 }

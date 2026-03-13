@@ -1,5 +1,5 @@
 import { removeUserDetails } from "@/redux/Modules/userlogin";
-import { store } from "@redux/../../src/redux/index";
+import { store } from "@/redux/index";
 import Cookies from "js-cookie";
 import { prepareURLEncodedParams } from "./prepareUrlEncodedParams";
 

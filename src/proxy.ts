@@ -13,7 +13,7 @@ const isAuthenticated = (req: NextRequest) => {
   return false;
 };
 
-export default async function middleware(req: NextRequest) {
+export default async function proxy(req: NextRequest) {
   if (
     !isAuthenticated(req) &&
     containsSubstring(req.nextUrl.pathname, protectedRoutes) &&

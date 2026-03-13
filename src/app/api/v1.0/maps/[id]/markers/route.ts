@@ -8,7 +8,8 @@ import { validateAccessToken } from "../../../../../../../lib/middlewares/authMi
 const markersController = new MarkersController();
 
 
-export async function POST(req: NextRequest, { params }: any) {
+export async function POST(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     //Check authorization
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
@@ -20,23 +21,24 @@ export async function POST(req: NextRequest, { params }: any) {
     if (validationErrors) {
         return ResponseHelper.sendValidationErrorResponse(422, 'Validation Error', validationErrors);
     }
-    
-    return markersController.addMarker(reqData, params);
-}   
 
-export async function GET(req: NextRequest, { params }: any) {
-       
-    const { searchParams } = new URL(req.url);
-    const query = Object.fromEntries(new URLSearchParams(Array.from(searchParams.entries())));
-    
-    return markersController.listMarkers(query, params);
+    return markersController.addMarker(reqData, resolvedParams);
 }
 
-export async function DELETE(req: NextRequest, { params }: any) {
+export async function GET(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
+    const { searchParams } = new URL(req.url);
+    const query = Object.fromEntries(new URLSearchParams(Array.from(searchParams.entries())));
+
+    return markersController.listMarkers(query, resolvedParams);
+}
+
+export async function DELETE(req: NextRequest, { params }: { params: Promise<any> }) {
+    const resolvedParams = await params;
     const authResult: any = await validateAccessToken(req);
     if (authResult.status === 403) {
         return authResult
     }
-    
-    return markersController.deleteMarkersByMapId(params);
+
+    return markersController.deleteMarkersByMapId(resolvedParams);
 }

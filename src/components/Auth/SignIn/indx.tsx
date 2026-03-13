@@ -119,31 +119,33 @@ const LoginPage = () => {
                       setErrorMessages(null);
                       setInvalid(null);
                     }}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton
-                            onClick={togglePasswordVisibility}
-                            edge="end"
-                          >
-                            {showPassword ? (
-                              <Image
-                                src="/login/view-icon.svg"
-                                alt=""
-                                height={16}
-                                width={16}
-                              />
-                            ) : (
-                              <Image
-                                src="/login/hide-icon.svg"
-                                alt=""
-                                height={16}
-                                width={16}
-                              />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
+                    slotProps={{
+                      input: {
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={togglePasswordVisibility}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <Image
+                                  src="/login/view-icon.svg"
+                                  alt=""
+                                  height={16}
+                                  width={16}
+                                />
+                              ) : (
+                                <Image
+                                  src="/login/hide-icon.svg"
+                                  alt=""
+                                  height={16}
+                                  width={16}
+                                />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      },
                     }}
                   />
                   <ErrorMessagesComponent
