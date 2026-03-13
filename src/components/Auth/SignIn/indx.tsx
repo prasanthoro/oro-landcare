@@ -91,6 +91,7 @@ const LoginPage = () => {
                 <div className="InputFeild">
                   <label className="formLabel">Email</label>
                   <TextField
+                    id="login-email"
                     autoComplete="new-email"
                     variant="outlined"
                     placeholder="Enter your email"
@@ -108,6 +109,7 @@ const LoginPage = () => {
                 <div className="InputFeild">
                   <label className="formLabel">Password</label>
                   <TextField
+                    id="login-password"
                     autoComplete="new-password"
                     variant="outlined"
                     placeholder="Enter your password"

@@ -5,6 +5,7 @@ import {
   getPolygonWithMarkers,
   processImportedData,
 } from "@/lib/helpers/mapsHelpers";
+import { exampleImportMarkersFile } from "@/lib/helpers/exportHelpers";
 import {
   getStaticMapAPI,
   importMapAPI,
@@ -240,6 +241,21 @@ const ImportModal: React.FC<IImportModalProps> = ({
                     Ensure all fields are correctly filled for a successful
                     import.
                   </p>
+                  <p>Download a sample template:</p>
+                  <div className="downloadTemplateGroup">
+                    <Button
+                      className="templateBtn"
+                      onClick={() => exampleImportMarkersFile("csv")}
+                    >
+                      Download CSV
+                    </Button>
+                    <Button
+                      className="templateBtn"
+                      onClick={() => exampleImportMarkersFile("xlsx")}
+                    >
+                      Download XLSX
+                    </Button>
+                  </div>
 
                   <p
                     style={{

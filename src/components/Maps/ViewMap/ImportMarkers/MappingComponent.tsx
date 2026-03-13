@@ -74,9 +74,16 @@ const MappingScreen = ({
         <Button
           className="downloadBtn"
           variant="contained"
-          onClick={exampleImportMarkersFile}
+          onClick={() => exampleImportMarkersFile("csv")}
         >
-          Download Template
+          Download CSV
+        </Button>
+        <Button
+          className="downloadBtn"
+          variant="contained"
+          onClick={() => exampleImportMarkersFile("xlsx")}
+        >
+          Download XLSX
         </Button>
       </div>
       <div className="table">

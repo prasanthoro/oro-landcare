@@ -51,8 +51,6 @@ export class MarkersDataServiceProvider {
             })
                 .from(mapMarkers)
                 .where(eq(mapMarkers.map_id, mapId))
-                .limit(limit)
-                .offset(skip)
         } else {
             queryData = db.select({
                 id: mapMarkers.id,
@@ -75,8 +73,10 @@ export class MarkersDataServiceProvider {
             })
                 .from(mapMarkers)
                 .where(eq(mapMarkers.map_id, mapId))
-                .limit(limit)
-                .offset(skip)
+        }
+
+        if (limit > 0) {
+            queryData = queryData.limit(limit).offset(skip);
         }
 
         // Apply dynamic sorting
