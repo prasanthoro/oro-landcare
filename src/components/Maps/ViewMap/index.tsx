@@ -12,7 +12,7 @@ import {
 import {
   getSingleMapDetailsAPI,
   getSingleMapMarkersAPI,
-  getSingleMarkerAPI,
+  getMarkerByIdAPI,
 } from "@/services/maps";
 import {
   Cluster,
@@ -240,14 +240,10 @@ const ViewGoogleMap = () => {
 
   const getSingleMarker = async (marker_id: any, lat: any, lng: any) => {
     setSingleMarkerLoading(true);
-    let markerID = marker_id;
     try {
-      const response = await getSingleMarkerAPI(id, lat, lng);
-      let markerData = response?.data.find(
-        (item: any) => item?.id == marker_id
-      );
-      setSingleMarkerData(response?.data);
-      setMarkerData(markerData);
+      const response = await getMarkerByIdAPI(id, marker_id);
+      setSingleMarkerData([response?.data]);
+      setMarkerData(response?.data);
     } catch (err) {
       console.error(err);
     } finally {

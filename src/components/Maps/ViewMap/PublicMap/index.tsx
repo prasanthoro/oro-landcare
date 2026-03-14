@@ -11,7 +11,7 @@ import {
 import {
   getSingleMapDetailsBySlugAPI,
   getSingleMapMarkersAPI,
-  getSingleMarkerAPI,
+  getMarkerByIdAPI,
 } from "@/services/maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import {
@@ -172,20 +172,19 @@ const PublicMap = () => {
 
   const getSingleMarker = async (marker_id: any, lat: any, lng: any) => {
     setSingleMarkerLoading(true);
-    let markerID = marker_id;
     try {
-      const response = await getSingleMarkerAPI(mapDetails?.id, lat, lng);
-      let markerData = response?.data.find(
-        (item: any) => item?.id == marker_id
-      );
-      setSingleMarkerData(response?.data);
+      const response = await getMarkerByIdAPI(mapDetails?.id, marker_id);
+      const markerData = response?.data;
+      setSingleMarkerData([markerData]);
       setMarkerData(markerData);
-      map.setCenter(
-        new google.maps.LatLng(
-          markerData?.coordinates[0],
-          markerData?.coordinates[1]
-        )
-      );
+      if (markerData?.coordinates) {
+        map.setCenter(
+          new google.maps.LatLng(
+            markerData.coordinates[0],
+            markerData.coordinates[1]
+          )
+        );
+      }
     } catch (err) {
       console.error(err);
     } finally {

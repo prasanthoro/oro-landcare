@@ -135,7 +135,9 @@ const updateDataWithCoordinates = (
 export const getImportedFilteredData = async ({ jsonData }: any) => {
   const headers: any =
     jsonData[0]?.length > 15 ? jsonData[0].slice(0, 15) : jsonData[0];
-  const rows: any = jsonData.slice(1);
+  const rows: any = jsonData
+    .slice(1)
+    .filter((row: any) => row.some((cell: any) => String(cell).trim() !== ""));
 
   const dataObjects = parseRows(rows, headers);
   const filteredDataObjects = dataObjects.filter((obj: any) => {
