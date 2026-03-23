@@ -171,6 +171,12 @@ const ViewMarkerDrawer = ({
           Back
         </Button>
       </header>
+      {!singleMarkerLoading && data?.length > 1 && (
+        <div className="coLocatedBanner">
+          <Image src="/map/map-orangebg.svg" alt="" width={18} height={18} />
+          <span>{data.length} markers at this location</span>
+        </div>
+      )}
       <div className="markerViewContent">
         {singleMarkerLoading ? (
           <Box className="viewContent">

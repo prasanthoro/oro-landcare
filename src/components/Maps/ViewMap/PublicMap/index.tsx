@@ -192,13 +192,45 @@ const PublicMap = () => {
     }
   };
 
+  const getCoLocatedMarkers = (markerData: any) => {
+    const TOLERANCE = 0.0001;
+    const lat = markerData?.coordinates?.[0];
+    const lng = markerData?.coordinates?.[1];
+    return markers.filter(
+      (m: any) =>
+        Math.abs((m.coordinates?.[0] || 0) - (lat || 0)) < TOLERANCE &&
+        Math.abs((m.coordinates?.[1] || 0) - (lng || 0)) < TOLERANCE
+    );
+  };
+
+  const getSingleMarkers = async (coLocated: any[]) => {
+    setSingleMarkerLoading(true);
+    try {
+      const responses = await Promise.all(
+        coLocated.map((m: any) => getMarkerByIdAPI(mapDetails?.id, m.id))
+      );
+      const data = responses.map((r: any) => r?.data).filter(Boolean);
+      setSingleMarkerData(data);
+      setMarkerData(data[0]);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSingleMarkerLoading(false);
+    }
+  };
+
   const handleMarkerClick = (markerData: any, markere: google.maps.Marker) => {
     router.replace(`${pathName}?marker_id=${markerData?.id}`);
-    getSingleMarker(
-      markerData?.id,
-      markerData?.coordinates[0],
-      markerData?.coordinates[1]
-    );
+    const coLocated = getCoLocatedMarkers(markerData);
+    if (coLocated.length > 1) {
+      getSingleMarkers(coLocated);
+    } else {
+      getSingleMarker(
+        markerData?.id,
+        markerData?.coordinates[0],
+        markerData?.coordinates[1]
+      );
+    }
     setSingleMarkerOpen(true);
     const isInCluster = markersRef.current.some(
       ({ marker }) => marker === markere
