@@ -78,7 +78,12 @@ export class MapsController {
 
   async listAll(query: any) {
     try {
-      const { page = 1, limit = 10, ...filters } = query;
+      const { ...filters } = query;
+      const page = Math.max(1, parseInt(query.page) || 1);
+      const limit = Math.max(1, parseInt(query.limit) || 10);
+      const skip = (page - 1) * limit;
+      delete filters.page;
+      delete filters.limit;
 
       if (
         filters.status &&
@@ -95,10 +100,10 @@ export class MapsController {
       ]);
 
       const responseData = paginationHelper.getPaginationResponse({
-        page: page,
+        page,
         count: parseInt(mapsCount[0].count),
-        limit: parseInt(limit),
-        skip: (page - 1) * limit,
+        limit,
+        skip,
         data: mapsData,
         message: MAPS_FETCHED,
         searchString: query.search_string,

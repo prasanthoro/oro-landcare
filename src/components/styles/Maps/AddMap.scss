@@ -554,11 +554,20 @@
   }
 }
 .showAllMarkerDialog {
+  .dialogTableScroll {
+    .tableContainer {
+      height: 100% !important;
+      overflow: auto !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+  }
   .dialogHeader {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eeeeee;
     .dialogTitle {
       color: #201c1c;
       font-family: $fontPrimary;
@@ -649,7 +658,7 @@
       width: 90%;
     }
     .mainContent {
-      padding: 0 24px 24px;
+      padding: 20px 24px 24px;
     }
     .modalContainer {
       display: grid;
@@ -819,21 +828,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 0.8rem;
-      padding: 24px 24px 0 24px;
+      padding: 20px 24px 16px 24px;
       position: sticky;
       top: 0;
       background-color: $whiteColor;
       z-index: 2;
+      border-bottom: 1px solid #eeeeee;
+      margin-bottom: 0;
       .modalHeading {
         color: #0d0d0d;
         font-family: $fontPrimary;
         font-size: $font_24;
-        font-weight: $fw_500;
+        font-weight: $fw_600;
         margin: 0;
-      }
-      img {
-        cursor: pointer;
       }
     }
     .instructions {
@@ -987,6 +994,22 @@
             }
           }
         }
+      }
+    }
+    .importSuccessMsg {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      margin: 0 1rem 0.75rem;
+      background: #f0f9e8;
+      border: 1px solid #b7d98a;
+      border-radius: 8px;
+      p {
+        margin: 0;
+        font-family: $fontPrimary;
+        font-size: $font_14;
+        color: #3a6b10;
       }
     }
     .tableContainer {

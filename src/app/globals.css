@@ -58,3 +58,37 @@
 .marker-cluster-large div {
   background-color: rgba(241, 128, 23, 0.6);
 }
+
+/* ── Google Maps Drawing Manager Controls (top-left) ── */
+div[role="menubar"] {
+  background: rgba(255, 255, 255, 0.97) !important;
+  border-radius: 12px !important;
+  padding: 4px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22) !important;
+  border: none !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  margin: 8px !important;
+}
+
+div[role="menuitem"] {
+  border-radius: 8px !important;
+  width: 34px !important;
+  height: 34px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: background 0.15s !important;
+  cursor: pointer !important;
+}
+
+div[role="menuitem"]:hover {
+  background-color: #f0f0f0 !important;
+}
+
+div[role="menuitem"][aria-checked="true"],
+div[role="menuitem"].gm-control-active {
+  background-color: #e8f0fe !important;
+}

@@ -51,36 +51,63 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin-left: 0.5rem;
+      gap: 10px;
+      background: #f8f9fa;
+      border: 1px solid #e8e8e8;
+      border-radius: 40px;
+      padding: 5px 10px 5px 5px;
+
+      .profileAvatar {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        background-color: #f5920a !important;
+        flex-shrink: 0;
+      }
 
       .profileName {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: flex-start;
-        padding: 3px 0;
-        gap: 4px;
+        gap: 2px;
 
         .profile {
-          color: #252525;
-          letter-spacing: 0;
+          color: #1a1a1a;
           font-family: $fontPrimary;
-          font-size: clamp(12px, 0.72vw, 15px);
-          font-weight: $fw_400;
-          line-height: 100%;
+          font-size: clamp(12px, 0.72vw, 14px);
+          font-weight: $fw_500;
+          line-height: 1;
           margin: 0;
+          white-space: nowrap;
         }
 
         .designation {
           color: $greenColor;
           font-family: $fontPrimary;
-          font-size: clamp(10px, 0.625vw, 14px);
+          font-size: clamp(10px, 0.6vw, 12px);
           font-weight: $fw_400;
-          line-height: 100%;
+          line-height: 1;
           margin: 0;
           text-transform: capitalize;
+        }
+      }
+
+      .profileDivider {
+        width: 1px;
+        height: 22px;
+        background: #ddd;
+        flex-shrink: 0;
+      }
+
+      .logoutBtn {
+        color: #888 !important;
+        padding: 4px !important;
+        transition: color 0.2s, background 0.2s !important;
+
+        &:hover {
+          color: #d32f2f !important;
+          background: rgba(211, 47, 47, 0.08) !important;
         }
       }
     }
@@ -91,23 +118,3 @@
   margin: 0 auto;
 }
 
-.menuItem {
-  font-size: clamp(0.75em, 0.72vw, 1.1em) !important;
-  font-family: $fontPrimary !important;
-  font-weight: $fw_400 !important;
-}
-
-.profileMenuBlock {
-  margin-top: 40px;
-
-  .MuiPaper-root {
-    box-shadow: none;
-    border: 1px solid #cecece;
-    border-radius: 4px;
-    padding-inline: 1rem;
-
-    li {
-      padding: 0;
-    }
-  }
-}

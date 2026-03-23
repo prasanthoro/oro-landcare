@@ -177,8 +177,8 @@ const MappingScreen = ({
           type="button"
           onClick={() => {
             setMappedValues({});
-            setSheetHeaders({});
-            setAutocompleteSuggestions({});
+            setSheetHeaders([]);
+            setAutocompleteSuggestions(SheetHeaders);
             onClose();
           }}
         >

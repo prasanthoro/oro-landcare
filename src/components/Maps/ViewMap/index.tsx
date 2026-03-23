@@ -394,7 +394,7 @@ const ViewGoogleMap = () => {
       }
       renderAllMarkers(markers, map, googleMaps);
     }
-  }, [map, googleMaps, markers]);
+  }, [map, googleMaps, markers, markersImagesWithOrganizationType]);
 
   useEffect(() => {
     setSearchParams(
@@ -407,7 +407,7 @@ const ViewGoogleMap = () => {
       <div
         className={styles.markersPageWeb}
         style={{
-          display: loading == false ? "" : "none",
+          display: loading ? "none" : "flex",
         }}
       >
         <div className={styles.googleMapBlock} id="markerGoogleMapBlock">
@@ -487,9 +487,7 @@ const ViewGoogleMap = () => {
           />
         )}
       </div>
-      <LoadingComponent
-        loading={loading || singleMarkerLoading || filtersLoading}
-      />
+      <LoadingComponent loading={loading} />
     </>
   );
 };

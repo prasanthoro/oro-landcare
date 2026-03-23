@@ -1,16 +1,13 @@
-import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
+import LogoutIcon from "@mui/icons-material/Logout";
 import * as React from "react";
 import Cookies from "js-cookie";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUserDetails } from "@/redux/Modules/userlogin";
-import { Menu, MenuItem } from "@mui/material";
 import {
   capitalizeFirstLetter,
   capitalizeFirstTwoWords,
@@ -22,24 +19,11 @@ interface pageProps {
 
 const Navbar: React.FC<pageProps> = ({ children }) => {
   const router = useRouter();
-  const pathname = usePathname();
   const dispatch = useDispatch();
 
   const userDetails = useSelector(
     (state: any) => state.auth.user?.data?.user_details
   );
-
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
 
   const logout = () => {
     Cookies.remove("user");
@@ -60,16 +44,10 @@ const Navbar: React.FC<pageProps> = ({ children }) => {
             />
           </div>
           <div className="profileGrp">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar sx={{ bgcolor: "orange" }}>
-                {userDetails?.name?.slice(0, 1).toUpperCase()}
-              </Avatar>
-            </IconButton>
-            <div
-              className="profileName"
-              onClick={handleOpenUserMenu}
-              style={{ cursor: "pointer" }}
-            >
+            <Avatar className="profileAvatar">
+              {userDetails?.name?.slice(0, 1).toUpperCase()}
+            </Avatar>
+            <div className="profileName">
               <h4 className="profile">
                 {capitalizeFirstTwoWords(userDetails?.name)}
               </h4>
@@ -79,26 +57,16 @@ const Navbar: React.FC<pageProps> = ({ children }) => {
                   : ""}
               </p>
             </div>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <MenuItem className="menuItem" onClick={logout}>
-                Log Out
-              </MenuItem>
-            </Menu>
+            <div className="profileDivider" />
+            <Tooltip title="Log Out" placement="bottom" arrow>
+              <IconButton
+                onClick={logout}
+                size="small"
+                className="logoutBtn"
+              >
+                <LogoutIcon fontSize="small" />
+              </IconButton>
+            </Tooltip>
           </div>
         </div>
       </div>

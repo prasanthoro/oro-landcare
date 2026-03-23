@@ -178,19 +178,16 @@ const ImportModal: React.FC<IImportModalProps> = ({
 
       if (response?.status === 200 || response?.status === 201) {
         toast.success(response.message);
-        if (filedata?.[0]?.length == 0) {
-          await getSingleMapMarkersForOrginazations({ id: id });
-          await getData({});
+        await getSingleMapMarkersForOrginazations({ id: id });
+        await getData({});
+        if (filedata?.[0]?.length > 0) {
           await addMapWithCordinates(filedata);
+        }
+        if (filedata?.[0]?.length === 0) {
           onClose();
           setFile(null);
-          setSuccess(true);
-        } else {
-          await getSingleMapMarkersForOrginazations({ id: id });
-          await getData({});
-          await addMapWithCordinates(filedata);
-          setSuccess(true);
         }
+        setSuccess(true);
       } else if (response?.status === 422) {
         setErrorMessages(response?.errors);
         toast.error("Error: " + response?.message);
@@ -208,14 +205,17 @@ const ImportModal: React.FC<IImportModalProps> = ({
       <div className="modalContent">
         <div className="modalHeader">
           <h2 className="modalHeading">Import Markers</h2>
-
-          <Image
-            src="/map/close-icon.svg"
-            alt=""
-            width={30}
-            height={30}
+          <IconButton
+            aria-label="close"
             onClick={onClose}
-          />
+            size="small"
+            sx={{
+              color: "#555",
+              "&:hover": { background: "#f5f5f5" },
+            }}
+          >
+            <Image src="/map/close-icon.svg" alt="close" width={22} height={22} />
+          </IconButton>
         </div>
         <div className="mainContent">
           <div
@@ -316,7 +316,7 @@ const ImportModal: React.FC<IImportModalProps> = ({
                         setCheckMapping(false);
                         setFile(null);
                         setValidationsData([]);
-                        setSheetHeaders({});
+                        setSheetHeaders([]);
                         setSheetValues([]);
                         setSuccess(false);
                       }}
@@ -332,6 +332,7 @@ const ImportModal: React.FC<IImportModalProps> = ({
                 )}
               </div>
             </div>
+
             <div className="rightBlock">
               {checkMapping ? (
                 <div>
@@ -368,11 +369,9 @@ const ImportModal: React.FC<IImportModalProps> = ({
             </div>
           </div>
 
-          {validationsData?.length > 0 && !checkMapping ? (
-            <ValidationsTable validationsData={validationsData} />
-          ) : (
-            ""
-          )}
+          {!checkMapping && (success || validationsData?.[1]?.length > 0) ? (
+            <ValidationsTable validationsData={validationsData} success={success} />
+          ) : null}
         </div>
         <LoadingComponent loading={loading} />
       </div>

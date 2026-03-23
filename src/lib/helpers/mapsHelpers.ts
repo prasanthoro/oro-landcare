@@ -73,6 +73,7 @@ const parseRows = (rows: any[], headers: any[]) => {
     let obj: any = {};
     headers.forEach((headerName: any, i: any) => {
       const mappedItem = subHeadersMappingConstants[headerName];
+      if (!mappedItem) return; // skip unmapped/extra columns
       const value = row[i];
       obj[mappedItem] =
         mappedItem == "organisation_type"
@@ -133,8 +134,7 @@ const updateDataWithCoordinates = (
 };
 
 export const getImportedFilteredData = async ({ jsonData }: any) => {
-  const headers: any =
-    jsonData[0]?.length > 15 ? jsonData[0].slice(0, 15) : jsonData[0];
+  const headers: any = jsonData[0];
   const rows: any = jsonData
     .slice(1)
     .filter((row: any) => row.some((cell: any) => String(cell).trim() !== ""));

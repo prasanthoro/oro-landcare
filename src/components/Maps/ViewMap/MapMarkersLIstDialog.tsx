@@ -150,10 +150,19 @@ const MapMarkersListDialog = ({
         sort_type: "",
       });
       getAllMapMarkersForOrginazations();
+    } else {
+      // Reset all state when dialog closes so next open starts fresh
+      setMarkers([]);
+      setPaginationDetails({});
+      setSearchParams({});
+      setLimitData(12);
+      setSearch("");
+      setSelectType(null);
     }
   }, [open]);
 
   useEffect(() => {
+    if (!open) return; // Don't fire when dialog is closed
     const debounce = setTimeout(() => {
       getAllMapMarkers({
         page: 1,
@@ -207,18 +216,27 @@ const MapMarkersListDialog = ({
       open={open}
       fullWidth
       className="showAllMarkerDialog"
-      sx={{
-        background: "#0000008f",
-        zIndex: 1000,
-        "& .MuiPaper-root": {
-          margin: "0 auto!important",
-          maxWidth: "90% ",
-          maxHeight: "600px",
-          borderRadius: "10px",
+      slotProps={{
+        paper: {
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+            height: "600px",
+            maxHeight: "90vh",
+            margin: "0 auto",
+            maxWidth: "90%",
+            borderRadius: "10px",
+          },
         },
       }}
+      sx={{ background: "#0000008f", zIndex: 1000 }}
     >
-      <div className="dialogHeader">
+      {/* Sticky filter header — stays at top while table scrolls */}
+      <div
+        className="dialogHeader"
+        style={{ flexShrink: 0, backgroundColor: "#fff", zIndex: 10 }}
+      >
         <div className="dialogTitle">
           <Image src="/map/map-orangebg.svg" alt="" width={30} height={30} />
           <span> All Markers</span>
@@ -252,11 +270,7 @@ const MapMarkersListDialog = ({
           <IconButton
             className="iconBtn"
             aria-label="close"
-            onClick={() => {
-              handleClose();
-              setSelectType(null);
-              setSearch("");
-            }}
+            onClick={handleClose}
           >
             <Image
               src="/map/close-with-border.svg"
@@ -268,7 +282,11 @@ const MapMarkersListDialog = ({
         </div>
       </div>
 
-      <div>
+      {/* Scrollable table area — thead sticky works here */}
+      <div
+        style={{ flex: 1, overflowY: "auto" }}
+        className="dialogTableScroll"
+      >
         <TanstackTableComponent
           data={markers}
           getData={getAllMapMarkers}
@@ -289,17 +307,19 @@ const MapMarkersListDialog = ({
           loading={showLoading}
           searchParams={searchParams}
         />
-        {markers?.length ? (
+      </div>
+
+      {/* Sticky pagination — stays at bottom */}
+      {markers?.length ? (
+        <div style={{ flexShrink: 0 }}>
           <TablePaginationComponent
             paginationDetails={paginationDetails}
             capturePageNum={capturePageNum}
             captureRowPerItems={captureRowPerItems}
             values="Markers"
           />
-        ) : (
-          ""
-        )}
-      </div>
+        </div>
+      ) : null}
       <DeleteDialog
         deleteOpen={deleteOpen}
         handleDeleteCose={handleDeleteCose}

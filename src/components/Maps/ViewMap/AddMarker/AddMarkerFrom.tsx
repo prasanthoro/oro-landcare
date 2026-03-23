@@ -201,7 +201,7 @@ const MarkerPopup = ({
                 <TextField
                   className="defaultTextFeild text "
                   placeholder="Enter Title"
-                  value={popupFormData?.title}
+                  value={popupFormData?.title ?? ""}
                   name="title"
                   onChange={handleInputChange}
                 />
@@ -213,7 +213,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="organisation_type"
                   placeholder="Enter Type"
-                  value={popupFormData?.organisation_type}
+                  value={popupFormData?.organisation_type ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent
@@ -226,7 +226,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="contact"
                   placeholder="Enter Contact"
-                  value={popupFormData?.contact}
+                  value={popupFormData?.contact ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent
@@ -239,7 +239,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="phone"
                   placeholder="Enter Phone"
-                  value={popupFormData?.phone}
+                  value={popupFormData?.phone ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent errorMessage={errorMessages["phone"]} />
@@ -251,7 +251,7 @@ const MarkerPopup = ({
                   name="email"
                   type="email"
                   placeholder="Enter Email"
-                  value={popupFormData?.email}
+                  value={popupFormData?.email ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent errorMessage={errorMessages["email"]} />
@@ -262,7 +262,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="fax"
                   placeholder="Enter Fax"
-                  value={popupFormData?.fax}
+                  value={popupFormData?.fax ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent errorMessage={errorMessages["fax"]} />
@@ -276,7 +276,7 @@ const MarkerPopup = ({
                 rows={5}
                 multiline
                 placeholder="Enter description"
-                value={popupFormData?.description}
+                value={popupFormData?.description ?? ""}
                 onChange={handleInputChange}
               />
               <ErrorMessagesComponent
@@ -293,7 +293,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild  "
                   name="postal_address"
                   placeholder="Enter Postal Address"
-                  value={popupFormData?.postal_address}
+                  value={popupFormData?.postal_address ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent
@@ -306,7 +306,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild  "
                   name="street_address"
                   placeholder="Enter Street Address"
-                  value={popupFormData?.street_address}
+                  value={popupFormData?.street_address ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent
@@ -319,7 +319,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="postcode"
                   placeholder="Enter Postcode"
-                  value={popupFormData?.postcode}
+                  value={popupFormData?.postcode ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent
@@ -332,7 +332,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="town"
                   placeholder="Enter Town"
-                  value={popupFormData?.town}
+                  value={popupFormData?.town ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent errorMessage={errorMessages["town"]} />
@@ -343,7 +343,7 @@ const MarkerPopup = ({
                   className="defaultTextFeild text "
                   name="website"
                   placeholder="Enter Website link"
-                  value={popupFormData?.website}
+                  value={popupFormData?.website ?? ""}
                   onChange={handleInputChange}
                 />
                 <ErrorMessagesComponent

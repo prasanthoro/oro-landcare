@@ -17,14 +17,14 @@ const TablePaginationComponent = ({
 }: any) => {
   const pathName = usePathname();
   const useParams = useSearchParams();
-  const [pageNum, setPageNum] = useState<number | string>();
+  const [pageNum, setPageNum] = useState<number | string>(1);
   const [noOfRows, setNoOfRows] = useState<number | string>(
-    paginationDetails?.limit
+    paginationDetails?.limit ?? 12
   );
   const [searchParams, setSearchParams] = useState(
     Object.fromEntries(new URLSearchParams(Array.from(useParams.entries())))
   );
-  const [pageValue, setPageValue] = useState(paginationDetails?.page);
+  const [pageValue, setPageValue] = useState<number | string>(paginationDetails?.page ?? 1);
 
   useEffect(() => {
     setSearchParams(

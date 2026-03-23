@@ -172,7 +172,26 @@ const ViewMarkerDrawer = ({
         </Button>
       </header>
       <div className="markerViewContent">
-        {data?.map((item: any, index: any) => {
+        {singleMarkerLoading ? (
+          <Box className="viewContent">
+            <Skeleton
+              variant="rectangular"
+              width="100%"
+              height={200}
+              sx={{ borderRadius: "8px", mb: 1.5 }}
+            />
+            <Skeleton width="65%" height={28} sx={{ mb: 0.75 }} />
+            <Skeleton width="85%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="45%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="55%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="70%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="50%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="60%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton width="40%" height={20} sx={{ mb: 0.75 }} />
+            <Skeleton variant="rectangular" width="100%" height={36} sx={{ borderRadius: "6px", mt: 1 }} />
+          </Box>
+        ) : null}
+        {!singleMarkerLoading && data?.map((item: any, index: any) => {
           const currentIndex = currentIndices[item.id] || 0;
           return (
             <Box className="viewContent" key={index}>
@@ -473,6 +492,7 @@ const ViewMarkerDrawer = ({
           );
         })}
       </div>
+
 
       <Menu
         sx={{ mt: 1 }}

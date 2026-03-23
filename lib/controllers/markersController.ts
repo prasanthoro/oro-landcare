@@ -100,24 +100,26 @@ export class MarkersController {
         return ResponseHelper.sendErrorResponse(400, MAP_NOT_FOUND);
       }
 
-      let { page = 1, limit = 10, ...filteredQuery } = query;
+      const { get_all, ...filteredQuery } = query;
+      let page = Math.max(1, parseInt(query.page) || 1);
+      let limit = Math.max(1, parseInt(query.limit) || 10);
 
       let skip = (page - 1) * limit;
-      if (filteredQuery.get_all) {
+      if (get_all) {
         limit = 0;
         skip = 0;
       }
 
       const [markersData, markerCount]: any = await Promise.all([
-        markersDataServiceProvider.findAllByMapId(skip,limit,mapId,filteredQuery),
+        markersDataServiceProvider.findAllByMapId(skip, limit, mapId, filteredQuery),
         markersDataServiceProvider.findMarkersCount(filteredQuery, mapId),
       ]);
 
       const responseData = paginationHelper.getPaginationResponse({
-        page: page,
+        page,
         count: parseInt(markerCount[0].count),
-        limit: parseInt(limit),
-        skip: (page - 1) * limit,
+        limit,
+        skip,
         data: markersData,
         message: MARKERS_FETCHED,
         searchString: query.search_string,

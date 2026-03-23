@@ -151,7 +151,7 @@ const MapMarkersList = ({
                       const { marker } = markerEntry;
                       navigateToMarker(
                         map,
-                        searchParams?.marker_id,
+                        markerDetails?.id,
                         singleMarkers
                       );
                       handleMarkerClick(markerDetails, marker);

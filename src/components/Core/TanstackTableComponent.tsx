@@ -165,9 +165,7 @@ const TanstackTableComponent: FC<pageProps> = ({
                 </div>
               </td>
             </tr>
-          ) : (
-            ""
-          )}
+          ) : null}
         </tbody>
       </table>
     </div>
