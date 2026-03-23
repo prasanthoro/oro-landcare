@@ -24,7 +24,7 @@ const TablePaginationComponent = ({
   const [searchParams, setSearchParams] = useState(
     Object.fromEntries(new URLSearchParams(Array.from(useParams.entries())))
   );
-  const [pageValue, setPageValue] = useState<number | string>(paginationDetails?.page ?? 1);
+  const [pageValue, setPageValue] = useState<any>(paginationDetails?.page ?? 1);
 
   useEffect(() => {
     setSearchParams(
@@ -116,8 +116,8 @@ const TablePaginationComponent = ({
             (paginationDetails?.page == paginationDetails?.total_pages
               ? paginationDetails?.total
               : paginationDetails?.total < paginationDetails?.limit
-              ? paginationDetails?.total
-              : paginationDetails?.page * paginationDetails?.limit)}{" "}
+                ? paginationDetails?.total
+                : paginationDetails?.page * paginationDetails?.limit)}{" "}
           of {paginationDetails?.total} {values}
         </Typography>
 
